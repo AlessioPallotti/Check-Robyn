@@ -1051,7 +1051,7 @@ model_refit <- function(x_train, y_train, x_val, y_val, x_test, y_test,
     alpha = 0, # 0 for ridge regression
     lambda = lambda,
     lower.limits=c(0,   0,   0, 0,0,0,0  ), 
-    upper.limits=c(10, Inf, Inf, Inf, Inf,Inf,Inf),
+    upper.limits=c(10, 10, 10, 10, 10,10,10),
     type.measure = "mse",
     penalty.factor = penalty.factor,
     intercept = intercept,
@@ -1069,7 +1069,7 @@ model_refit <- function(x_train, y_train, x_val, y_val, x_test, y_test,
       alpha = 0, # 0 for ridge regression
       lambda = lambda,
     lower.limits=c(0,   0,   0, 0,0,0,0  ), 
-    upper.limits=c(10, Inf, Inf, Inf, Inf,Inf,Inf),
+    upper.limits=c(10, 10, 10, 10, 10,10,10),
       penalty.factor = penalty.factor,
       intercept = FALSE,
       ...
