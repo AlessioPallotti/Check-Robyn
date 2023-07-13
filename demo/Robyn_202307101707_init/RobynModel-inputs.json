@@ -1,0 +1,48 @@
+{
+  "InputCollect": {
+    "date_var": ["DATE"],
+    "dayInterval": [7],
+    "intervalType": ["week"],
+    "dep_var": ["revenue"],
+    "dep_var_type": ["revenue"],
+    "prophet_vars": ["trend", "season", "holiday"],
+    "prophet_signs": ["default", "default", "default"],
+    "prophet_country": ["DE"],
+    "paid_media_vars": ["tv_S", "ooh_S", "print_S", "facebook_I"],
+    "paid_media_signs": ["positive", "positive", "positive", "positive"],
+    "paid_media_spends": ["tv_S", "ooh_S", "print_S", "facebook_S"],
+    "mediaVarCount": [4],
+    "exposure_vars": ["facebook_I"],
+    "all_media": ["tv_S", "ooh_S", "print_S", "facebook_S"],
+    "all_ind_vars": ["trend", "season", "holiday", "tv_S", "ooh_S", "print_S", "facebook_S"],
+    "unused_vars": ["search_clicks_P", "search_S", "competitor_sales_B", "events", "newsletter"],
+    "window_start": ["2016-01-04"],
+    "rollingWindowStartWhich": [7],
+    "window_end": ["2018-12-31"],
+    "rollingWindowEndWhich": [163],
+    "rollingWindowLength": [157],
+    "refreshAddedStart": ["2016-01-04"],
+    "adstock": ["geometric"],
+    "hyperparameters": {
+      "facebook_S_alphas": [0.5, 3],
+      "facebook_S_gammas": [0.3, 1],
+      "facebook_S_thetas": [0, 0.3],
+      "print_S_alphas": [0.5, 3],
+      "print_S_gammas": [0.3, 1],
+      "print_S_thetas": [0.1, 0.4],
+      "tv_S_alphas": [0.5, 3],
+      "tv_S_gammas": [0.3, 1],
+      "tv_S_thetas": [0.3, 0.8],
+      "ooh_S_alphas": [0.5, 3],
+      "ooh_S_gammas": [0.3, 1],
+      "ooh_S_thetas": [0.1, 0.4],
+      "train_size": [0.5, 0.8]
+    },
+    "calibration_input": {},
+    "custom_params": [],
+    "version": ["Robyn (dev) v3.10.4.9001 [R-4.2.3]"]
+  },
+  "OutputCollect": {
+    "conv_msg": ["DECOMP.RSSD NOT converged", "NRMSE NOT converged"]
+  }
+}

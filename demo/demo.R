@@ -20,6 +20,8 @@
 ## B) Install the latest dev version from GitHub:
 # install.packages("remotes") # Install remotes first if you haven't already
 # remotes::install_github("facebookexperimental/Robyn/R")
+remotes::install_github("AlessioPallotti/glmnet-unbounded")
+remotes::install_github("AlessioPallotti/Check-Robyn/R") 
 library(Robyn)
 
 # Please, check if you have installed the latest version before running this demo. Update if not
@@ -70,12 +72,12 @@ InputCollect <- robyn_inputs(
   dep_var_type = "revenue", # "revenue" (ROI) or "conversion" (CPA)
   prophet_vars = c("trend", "season", "holiday"), # "trend","season", "weekday" & "holiday"
   prophet_country = "DE", # input country code. Check: dt_prophet_holidays
-  context_vars = c("competitor_sales_B", "events"), # e.g. competitors, discount, unemployment etc
-  paid_media_spends = c("tv_S", "ooh_S", "print_S", "facebook_S", "search_S"), # mandatory input
-  paid_media_vars = c("tv_S", "ooh_S", "print_S", "facebook_I", "search_clicks_P"), # mandatory.
+  #context_vars = c("competitor_sales_B", "events"), # e.g. competitors, discount, unemployment etc
+  paid_media_spends = c("tv_S", "ooh_S", "print_S", "facebook_S"), # mandatory input
+  paid_media_vars = c("tv_S", "ooh_S", "print_S", "facebook_I"), # mandatory.
   # paid_media_vars must have same order as paid_media_spends. Use media exposure metrics like
   # impressions, GRP etc. If not applicable, use spend instead.
-  organic_vars = "newsletter", # marketing activity without media spend
+  #organic_vars = "newsletter", # marketing activity without media spend
   # factor_vars = c("events"), # force variables in context_vars or organic_vars to be categorical
   window_start = "2016-01-01",
   window_end = "2018-12-31",
@@ -176,15 +178,15 @@ hyperparameters <- list(
   tv_S_alphas = c(0.5, 3),
   tv_S_gammas = c(0.3, 1),
   tv_S_thetas = c(0.3, 0.8),
-  search_S_alphas = c(0.5, 3),
-  search_S_gammas = c(0.3, 1),
-  search_S_thetas = c(0, 0.3),
+  #search_S_alphas = c(0.5, 3),
+ # search_S_gammas = c(0.3, 1),
+  #search_S_thetas = c(0, 0.3),
   ooh_S_alphas = c(0.5, 3),
   ooh_S_gammas = c(0.3, 1),
   ooh_S_thetas = c(0.1, 0.4),
-  newsletter_alphas = c(0.5, 3),
-  newsletter_gammas = c(0.3, 1),
-  newsletter_thetas = c(0.1, 0.4),
+  #newsletter_alphas = c(0.5, 3),
+  #newsletter_gammas = c(0.3, 1),
+  #newsletter_thetas = c(0.1, 0.4),
   train_size = c(0.5, 0.8)
 )
 
@@ -298,8 +300,8 @@ if (length(InputCollect$exposure_vars) > 0) {
 OutputModels <- robyn_run(
   InputCollect = InputCollect, # feed in all model specification
   cores = NULL, # NULL defaults to (max available - 1)
-  iterations = 2000, # 2000 recommended for the dummy dataset with no calibration
-  trials = 5, # 5 recommended for the dummy dataset
+  iterations = 500, # 2000 recommended for the dummy dataset with no calibration
+  trials = 3, # 5 recommended for the dummy dataset
   ts_validation = TRUE, # 3-way-split time series for NRMSE validation.
   add_penalty_factor = FALSE # Experimental feature. Use with caution.
 )
